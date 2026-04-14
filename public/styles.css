@@ -1,0 +1,265 @@
+:root {
+    --bg: #f6f8fc;
+    --card: #ffffff;
+    --ink: #101820;
+    --muted: #4b5563;
+    --brand: #0f766e;
+    --brand-2: #f59e0b;
+    --line: #dce3ef;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Space Grotesk", sans-serif;
+    color: var(--ink);
+    background:
+        radial-gradient(circle at 12% 10%, #dbeafe 0%, transparent 35%),
+        radial-gradient(circle at 88% 20%, #fef3c7 0%, transparent 40%),
+        linear-gradient(180deg, #f9fafb 0%, #eef2ff 100%);
+}
+
+.layout {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 20px;
+    display: grid;
+    gap: 16px;
+}
+
+.card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 16px;
+    box-shadow: 0 12px 30px rgba(16, 24, 40, 0.06);
+}
+
+.hero h1 {
+    margin: 0 0 8px;
+    font-size: clamp(1.5rem, 2.2vw, 2.3rem);
+}
+
+.hero p {
+    margin: 0;
+    color: var(--muted);
+}
+
+.status-row {
+    margin-top: 12px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.badge {
+    padding: 6px 10px;
+    border-radius: 999px;
+    background: #e2e8f0;
+    color: #0f172a;
+    font-size: 0.9rem;
+}
+
+.badge.ok {
+    background: #d1fae5;
+    color: #065f46;
+}
+
+.badge.err {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+.grid-form {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+}
+
+label {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 0.95rem;
+}
+
+input,
+select,
+button {
+    font-family: inherit;
+}
+
+input,
+select {
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 0.95rem;
+}
+
+.check {
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+}
+
+.actions {
+    grid-column: span 2;
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+}
+
+.primary-btn,
+.ghost-btn,
+.danger-btn {
+    border: 0;
+    border-radius: 10px;
+    padding: 10px 14px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.primary-btn {
+    background: var(--brand);
+    color: white;
+}
+
+.ghost-btn {
+    background: #e2e8f0;
+    color: #0f172a;
+}
+
+.danger-btn {
+    background: #b91c1c;
+    color: white;
+}
+
+.danger-btn:disabled,
+.primary-btn:disabled,
+.ghost-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.mono,
+.logs,
+table {
+    font-family: "IBM Plex Mono", monospace;
+}
+
+.logs {
+    background: #0b1220;
+    color: #d1fae5;
+    border-radius: 10px;
+    padding: 12px;
+    min-height: 180px;
+    max-height: 340px;
+    overflow: auto;
+    white-space: pre-wrap;
+}
+
+.table-wrap {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    border-bottom: 1px solid var(--line);
+    text-align: left;
+    padding: 8px;
+    font-size: 0.82rem;
+}
+
+th {
+    background: #f8fafc;
+}
+
+.plots {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 12px;
+}
+
+.plot-card {
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    overflow: hidden;
+    background: #f8fafc;
+}
+
+.plot-card img {
+    width: 100%;
+    display: block;
+}
+
+.plot-card p {
+    margin: 8px 10px;
+    font-size: 0.85rem;
+    color: #334155;
+}
+
+.history-list {
+    display: grid;
+    gap: 10px;
+}
+
+.history-item {
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 10px;
+    background: #f8fafc;
+}
+
+.history-item .row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    font-size: 0.85rem;
+    color: #334155;
+}
+
+.pill {
+    border-radius: 999px;
+    padding: 2px 8px;
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+.pill.completed {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.pill.running {
+    background: #dbeafe;
+    color: #1d4ed8;
+}
+
+.pill.failed {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+.pill.canceled {
+    background: #f3f4f6;
+    color: #374151;
+}
+
+@media (max-width: 900px) {
+    .grid-form {
+        grid-template-columns: 1fr;
+    }
+
+    .actions {
+        grid-column: span 1;
+    }
+}

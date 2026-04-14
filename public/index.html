@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mobile Model Comparator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;600&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="/styles.css" />
+</head>
+
+<body>
+    <main class="layout">
+        <section class="hero card">
+            <h1>Mobile-Ready Model Comparison</h1>
+            <p>Run MobileNet vs ShuffleNet vs EfficientNet experiments from a browser and inspect results instantly.</p>
+            <div class="status-row">
+                <span id="healthBadge" class="badge">Checking server...</span>
+                <button id="refreshBtn" class="ghost-btn">Refresh Results</button>
+                <button id="exportBtn" class="ghost-btn">Export Bundle ZIP</button>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2>Run Configuration</h2>
+            <form id="runForm" class="grid-form">
+                <label>Epochs<input type="number" name="epochs" value="5" min="1" /></label>
+                <label>Batch Size<input type="number" name="batchSize" value="64" min="1" /></label>
+                <label>Learning Rate<input type="number" name="lr" value="0.0003" step="0.0001" /></label>
+                <label>Weight Decay<input type="number" name="weightDecay" value="0.0001" step="0.0001" /></label>
+                <label>Image Size<input type="number" name="imgSize" value="224" min="32" /></label>
+                <label>Benchmark Runs<input type="number" name="benchmarkRuns" value="100" min="5" /></label>
+                <label>Workers<input type="number" name="workers" value="2" min="0" /></label>
+                <label>ONNX Opset<input type="number" name="onnxOpset" value="17" min="11" /></label>
+
+                <label class="check"><input type="checkbox" name="distill" /> Enable Distillation</label>
+                <label class="check"><input type="checkbox" name="skipQuant" /> Skip Quantization</label>
+                <label class="check"><input type="checkbox" name="exportOnnx" /> Export ONNX</label>
+                <label class="check"><input type="checkbox" name="benchmarkOnnx" /> Benchmark ONNX</label>
+
+                <label>Teacher Model
+                    <select name="teacherModel">
+                        <option value="efficientnet_b0" selected>EfficientNet-B0</option>
+                        <option value="mobilenet_v3_small">MobileNetV3-Small</option>
+                        <option value="shufflenet_v2_x1_0">ShuffleNetV2 x1.0</option>
+                    </select>
+                </label>
+                <label>Distill Alpha<input type="number" name="distillAlpha" value="0.4" min="0" max="1"
+                        step="0.05" /></label>
+                <label>Distill Temperature<input type="number" name="distillTemperature" value="2.0" min="0.5"
+                        step="0.5" /></label>
+
+                <div class="actions">
+                    <button type="submit" class="primary-btn">Start Run</button>
+                    <button id="cancelBtn" type="button" class="danger-btn">Cancel Active Run</button>
+                </div>
+            </form>
+        </section>
+
+        <section class="card">
+            <h2>Run Status</h2>
+            <p id="runMeta" class="mono">No run started yet.</p>
+            <pre id="runLogs" class="logs">Logs will appear here.</pre>
+        </section>
+
+        <section class="card">
+            <h2>Comparison Table</h2>
+            <div id="tableContainer" class="table-wrap">No results available yet.</div>
+        </section>
+
+        <section class="card">
+            <h2>Generated Plots</h2>
+            <div id="plotsContainer" class="plots">No plots yet.</div>
+        </section>
+
+        <section class="card">
+            <h2>Run History</h2>
+            <div id="historyContainer" class="history-list">No run history yet.</div>
+        </section>
+    </main>
+
+    <script src="/app.js"></script>
+</body>
+
+</html>

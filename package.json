@@ -1,0 +1,15 @@
+{
+    "name": "mobile-model-comparison-ui",
+    "version": "1.0.0",
+    "private": true,
+    "description": "Node.js frontend + API for MobileNet vs ShuffleNet vs EfficientNet comparison",
+    "main": "server.js",
+    "scripts": {
+        "start": "node server.js"
+    },
+    "dependencies": {
+        "archiver": "^7.0.1",
+        "csv-parse": "^5.5.6",
+        "express": "^4.19.2"
+    }
+}
